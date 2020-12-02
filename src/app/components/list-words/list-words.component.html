@@ -1,0 +1,65 @@
+<div class="container p-4">
+    <div class="row ">
+        <div>
+            <div class="card col s12 m12 l5">
+                <div class="card-content">
+                    <form #wordForm="ngForm" (ngSubmit)="addWord(wordForm)">
+                      <div class="row">
+                          <div class="input-field  col s12" >
+                              <i class="material-icons prefix">cloud</i>     
+                              <input type="text" name="word" #word="ngModel"
+                               [(ngModel)]="wordService.selectedWord.word" placeholder="Ingrese la palabra">
+                          </div>
+          
+                          <div class="input-field col s12">
+                            <i class="material-icons prefix">mode_edit</i>     
+                            <textarea class="materialize-textarea" name="meaning"
+                            #meaning="ngModel"  [(ngModel)]="wordService.selectedWord.meaning" placeholder="Ingresa el significado"></textarea>
+                            </div>
+                          <div class="card-action">
+   
+                                <button class="btn btn-primary mr-2 right"(click)="resetForm(wordForm)">Nuevo</button>
+                                <button class="btn btn-secondary right" >Agendar
+                                    <i class="material-icons right">send</i>
+                                </button>
+                     
+                        </div>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m12s l7">
+            <table>
+                <thead>
+                  <tr>
+                      <th>Palabra</th>
+                      <th>Accion</th>
+                  </tr>
+                </thead>
+        
+                <tbody>
+                  <tr>
+                    <td>Alvin</td>
+                    <td>
+                        <a (click)="editWord()">
+                            <i class="material-icons">edit</i>
+                        </a>
+                        <a (click)="deleteWord()">
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Alan</td>
+                    <td>Jellybean</td>
+                  </tr>
+                  <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                  </tr>
+                </tbody>
+              </table> 
+        </div>
+    </div>
+</div>
