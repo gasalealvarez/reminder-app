@@ -1,10 +1,13 @@
-<div class="container p-4">
+<footer>
+ <div class="container" class="contedor">
     <div class="row ">
         <div>
             <div class="card col s12 m12 l5">
                 <div class="card-content">
-                    <form #wordForm="ngForm" (ngSubmit)="addWord(wordForm)">
+                    <form #wordForm="ngForm" >
                       <div class="row">
+                        <input type="hidden" #id="ngModel" name="id"
+                        [(ngModel)]="wordService.selectedWord.id">
                           <div class="input-field  col s12" >
                               <i class="material-icons prefix">cloud</i>     
                               <input type="text" name="word" #word="ngModel"
@@ -19,7 +22,7 @@
                           <div class="card-action">
    
                                 <button class="btn btn-primary mr-2 right"(click)="resetForm(wordForm)">Nuevo</button>
-                                <button class="btn btn-secondary right" >Agendar
+                                <button class="btn btn-secondary right" (click)="addWord(wordForm)">Agendar
                                     <i class="material-icons right">send</i>
                                 </button>
                      
@@ -39,27 +42,26 @@
                 </thead>
         
                 <tbody>
-                  <tr>
-                    <td>Alvin</td>
+                  <tr *ngFor="let word of words">
+                    <td>{{ word.word }}</td>
                     <td>
-                        <a (click)="editWord()">
+                        <a (click)="editWord(word)">
                             <i class="material-icons">edit</i>
                         </a>
-                        <a (click)="deleteWord()">
+                        <a (click)="deleteWord(word)">
                             <i class="material-icons">delete</i>
                         </a>
                     </td>
-                  </tr>
-                  <tr>
-                    <td>Alan</td>
-                    <td>Jellybean</td>
-                  </tr>
-                  <tr>
-                    <td>Jonathan</td>
-                    <td>Lollipop</td>
                   </tr>
                 </tbody>
               </table> 
         </div>
     </div>
+ </div>
+ <div class="footer-copyright">
+  <div class="container">
+  © 2020 
+  <a  href="#!">Reminder App</a>
+  </div>
 </div>
+</footer>
