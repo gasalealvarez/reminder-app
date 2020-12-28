@@ -1,5 +1,5 @@
 node_modules
-	.firebase/
-	.firebaserc
-	dist/
-	firebase.json
+firebase/
+firebaserc
+dist/
+firebase.json
