@@ -11,7 +11,7 @@ export class WordService {
   private wordCollection: AngularFirestoreCollection<Iword>;
   private words: Observable<Iword[]>;
   private wordDoc!: AngularFirestoreDocument<Iword>;
-  private word!: Observable<Iword>;
+  word: Observable<Iword> | undefined;
 
   public selectedWord : Iword ={};
   
@@ -49,11 +49,12 @@ export class WordService {
     this.wordCollection.add(word);
    }
 
-   updateWord(word : Iword): void {
-    let idWord = word.id;
-    this.wordDoc = this.afs.doc<Iword>(`words/${idWord}`);
-    this.wordDoc.update(word);
+   updateWord(word : Iword, id: string | undefined) : void {
+    this.afs.collection('words').doc(id).update(word);
+  
    }
+
+   
 
    deleteWord (word : Iword):void {
     let idWord = word.id; 

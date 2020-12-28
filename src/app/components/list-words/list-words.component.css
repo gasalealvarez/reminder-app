@@ -5,8 +5,17 @@
     height: 100%;
   }
 
+  .loaders {
+    display: fixed;
+  }
+
   main {
     flex: 1 0 auto;
+  }
+
+  .materialize-textarea {
+    height: 8rem;
+  
   }
 
   .footer-copyright { 

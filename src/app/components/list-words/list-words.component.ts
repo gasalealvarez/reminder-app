@@ -23,7 +23,6 @@ export class ListWordsComponent implements OnInit {
   public words!: Iword[];
 
   ngOnInit(): void {
-    this.addDays();
     this.listQuarantine(); 
   }
 
@@ -31,9 +30,11 @@ export class ListWordsComponent implements OnInit {
       this.wordService.getAllQuarantine().subscribe(words => {
         this.words = words;
       })
+      
   }
   
   addWord(form: NgForm){
+    this.addDays();
     let id=  form.value.id;
     this.word = {
       word: form.value.word,
@@ -42,13 +43,13 @@ export class ListWordsComponent implements OnInit {
     }
 
     if  (id !=  null) {
-      this.wordService.updateWord(this.word);
+      this.wordService.updateWord(this.word,  this.wordService.selectedWord.id);
       M.toast({html: 'Palabra Editada'});
     }  else {
       this.wordService.addWord(this.word);
       M.toast({html: 'Palabra agregada'});
     }
-   
+    
     form.reset();
     this.wordService.selectedWord = {};
   }
@@ -62,9 +63,7 @@ export class ListWordsComponent implements OnInit {
   }
   editWord(word : Iword) {
     this.wordService.selectedWord = word;
-    this.wordService.updateWord(word);
-    this.resetForm();
-   }
+  }
 
   deleteWord(word : Iword) {
     if (confirm('Estas seguro de querer eliminarlo ??')) {

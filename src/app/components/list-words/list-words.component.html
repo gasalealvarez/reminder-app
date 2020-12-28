@@ -1,7 +1,8 @@
 <footer>
  <div class="container" class="contedor">
     <div class="row ">
-        <div>
+        <div class="loaders">
+          <div>
             <div class="card col s12 m12 l5">
                 <div class="card-content">
                     <form #wordForm="ngForm" >
@@ -16,7 +17,7 @@
           
                           <div class="input-field col s12">
                             <i class="material-icons prefix">mode_edit</i>     
-                            <textarea class="materialize-textarea" name="meaning"
+                            <textarea class="materialize-textarea" name="meaning" rows="2" cols="20" rows="5" wrap="hard"
                             #meaning="ngModel"  [(ngModel)]="wordService.selectedWord.meaning" placeholder="Ingresa el significado"></textarea>
                             </div>
                           <div class="card-action">
@@ -31,6 +32,7 @@
                     </form>
                 </div>
             </div>
+        </div>
         </div>
         <div class="col s12 m12s l7">
             <table>
@@ -58,10 +60,10 @@
         </div>
     </div>
  </div>
- <div class="footer-copyright">
+ <!-- <div class="footer-copyright">
   <div class="container">
   © 2020 
   <a  href="#!">Reminder App</a>
   </div>
-</div>
+</div> -->
 </footer>
